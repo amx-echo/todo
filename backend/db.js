@@ -1,11 +1,13 @@
 import {Pool} from 'pg';
+import dotenv from 'dotenv';
+dotenv.config()
 
 const pool = new Pool({
-    user: "pgadmin",
-    password:"Roin@5236",
-    host: "pern-todo-db.postgres.database.azure.com",
-    port: 5432,
-    database:"postgres"
+    user: process.env.USER,
+    password:process.env.PASSWORD,
+    host: process.env.HOST,
+    port: process.env.DB_PORT,
+    database: process.env.DB
 })
 
 export default pool;
