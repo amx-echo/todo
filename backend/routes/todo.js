@@ -2,7 +2,7 @@ import { Router } from "express";
 import pool from "../db.js";
 
 
-// test
+
 
 const router = Router();
 
@@ -14,8 +14,9 @@ router.post("/", async (req,res)=>{
             [description,completed || false]
         );
         res.json(newTodo.rows[0])
+        console.log("successfully got the response")
     } catch (error) {
-        console.error(error.message)
+        console.error("error message: ",error.message)
         res.status(500).send("Server Error")
     }
 });
