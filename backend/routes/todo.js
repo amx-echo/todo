@@ -23,10 +23,13 @@ router.post("/", async (req,res)=>{
 
 router.get("/", async(req, res)=>{
     try {
+        console.log("before get todo");
         const allTodos = await pool.query("SELECT * FROM todo");
+        console.log("after get todo");
     res.json(allTodos.rows)
     } catch (error) {
-        console.error(error.message)
+        console.error("get todo error message " + error.message);
+        console.error("get todo error" + error)
         res.status(500).send("server error")
     }
 })
