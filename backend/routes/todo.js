@@ -1,6 +1,7 @@
 import { Router } from "express";
 import pool from "../db.js";
-
+import dotenv from 'dotenv'
+dotenv.config()
 
 
 
@@ -24,6 +25,7 @@ router.post("/", async (req,res)=>{
 router.get("/", async(req, res)=>{
     try {
         console.log("before get todo");
+        console.log("Database Credentials ", process.env.HOST, process.env.PASSWORD, process.env.HOST, process.env.DB_PORT, process.env.DB_USER)
         const allTodos = await pool.query("SELECT * FROM todo");
         console.log("after get todo");
     res.json(allTodos.rows)
